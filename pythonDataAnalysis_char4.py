@@ -78,3 +78,40 @@ print(data[names == 'Bob'])
 print(data[names != 'Bob'])
 print(data[~(names == 'Bob')])
 print(data[np.logical_not(names == 'Bob')])
+
+# fancy indexing: 20200114
+import numpy as np
+arr = np.empty((8, 4))
+print(arr)
+
+for i in range(8):
+    arr[i] = i
+
+print(arr)
+
+print(arr[1])
+print(arr[1][2])
+print(arr[1, 2])
+print(arr[[1, 2, 3]])
+print(arr[[1, 2, 3], 2])
+
+arr = np.arange(32)
+type(arr)
+arr = arr.reshape((8, 4))
+print(arr)
+print(arr[[1, 5, 7, 2], [0, 3, 1, 2]])
+print(arr[[1, 5, 7, 2]][:, [0, 3, 1, 2]])
+
+# a much better version
+print(arr[np.ix_([1, 5, 7, 2],[0, 3, 1, 2])])
+
+# transpose
+arr = np.random.randn(6, 3)
+print(arr.T)
+print(np.dot(arr.T, arr))
+
+arr = np.arange(16).reshape((2, 2, 4))
+
+# ufunc of numpy
+arr = np.arange(10)
+print(np.sqrt(arr))
