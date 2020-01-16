@@ -115,3 +115,52 @@ arr = np.arange(16).reshape((2, 2, 4))
 # ufunc of numpy
 arr = np.arange(10)
 print(np.sqrt(arr))
+
+points = np.arange(-5, 5, 0.01)
+xs, ys = np.meshgrid(points, points)
+print(ys)
+print(xs)
+
+import matplotlib.pyplot as plt
+import numpy as np
+points = np.arange(-5, 5, 0.01)
+xs, ys = np.meshgrid(points, points)
+z = np.sqrt(xs ** 2 + ys ** 2)
+plt.imshow(z, cmap = plt.cm.gray)
+plt.colorbar()
+
+xarr = np.array([1.1, 1.2, 1.3, 1.4, 1.5])
+yarr = np.array([2.1, 2.2, 2.3, 2.4, 2.5])
+cond = np.array([True, False, True, True, False])
+test_zip = 
+print(zip(xarr, yarr, cond))
+result = [(x if c else y ) for x, y, c in zip(xarr, yarr, cond)]
+result = np.where(cond, xarr, yarr)
+print(result)
+
+# test the code of zip()
+a = [1, 2, 3, 4]
+b = [5, 6, 7, 8, 9]
+zip_test = zip(a, b)
+print(list(zip_test))
+
+arr = randn(4, 4)
+test = np.where(arr > 0, 2, arr)
+print(test)
+
+# method : append
+result = []
+result.append(0)
+print(result)
+
+arr = np.random.randn(5, 4)
+print(arr)
+
+arr.mean(axis = 1)
+arr.mean(axis = 0)
+
+# sort 
+large_arr = np.random.randn(1000)
+print(large_arr)
+large_arr.sort()
+print(large_arr)
