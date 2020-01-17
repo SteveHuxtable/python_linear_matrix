@@ -164,3 +164,31 @@ large_arr = np.random.randn(1000)
 print(large_arr)
 large_arr.sort()
 print(large_arr)
+
+arr = np.arange(10)
+np.savez('array_archive.npz', a = arr, b = arr)
+arch = np.load('array_archive.npz')
+print(arch['b'])
+
+arr = np.loadtxt('test_np.txt', delimiter = ',')
+print(arr)
+
+x = np.array([[1, 2], [3, 4]])   # this is a matrix
+y = np.array([1, 2])  # this is a vector 
+np.dot(x, y)
+
+from numpy.linalg import inv, qr
+X = np.random.randn(5, 5)
+mat = X.T.dot(X)
+
+inv(mat)
+
+samples = np.random.normal(size = (4, 4))
+print(samples)
+
+from random import normalvariate
+from timeit import Timer
+N = 10000
+%timeit samples = [normalvariate(0, 1) for _ in range(N)]
+
+%timeit np.random.normal(size = N)
