@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "virtualEnv/bin/python"
+    "python.pythonPath": "virtualEnv/bin/python",
+    "html.format.wrapLineLength": 80
 }
