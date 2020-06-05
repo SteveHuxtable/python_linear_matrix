@@ -15,4 +15,12 @@ ax = plt.axes()
 df_X.query('label == -1').plot.scatter(x=0, y=1, ax=ax, color='blue')
 df_X.query('label == 1').plot.scatter(x=0, y=1, ax=ax, color='red')
 
+'''
 plt.scatter(x=df_X.query('label == 1')[0], y=df_X.query('label == 1')[1], color='blue')
+'''
+
+Xs = df_X[[0, 1]].values
+
+# add a col of ones for the intercept terms, and also use column vectors
+Xs = np.hstack([np.ones((Xs.shape[0], 1)), Xs])
+ys = df_X['label'].values
