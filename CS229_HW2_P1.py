@@ -1,5 +1,9 @@
 from __future__ import division
 import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+''' emperical loss version 
 
 try:
     xrange
@@ -63,3 +67,45 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+'''
+
+# the MLE and gradient regression version
+# read the dataset and plot the distribution
+dfb = pd.read_csv('data_b.txt', header=None, sep=' ', names=['label', 'x1', 'x2'])
+
+ax = plt.axes()
+dfb.query('label == -1').plot.scatter(x='x1', y='x2', ax=ax, color='blue')
+dfb.query('label == 1').plot.scatter(x='x1', y='x2', ax=ax, color='red')
+
+# then, we try to use MLE on the traing set to get the theta 
+dfb.head()
+list(dfb)
+# get the dependent and independent variable
+Yb = dfb[['label']].values
+Yb = Yb.astype(int)
+Xb = dfb[list(dfb)[1:]]
+Yb[Yb == -1] = 0
+
+# add the intercept columns
+Xb = np.hstack([np.ones((Xb.shape[0], 1)), Xb.values])
+
+def sigmoid(z):
+    return (1 / 1 + np.exp(- z))
+
+def deriv_sigmoid(z):
+    return sigmoid(z) * (1 -sigmoid(z))
+
+def logistic_p(theta, x, y):
+    return ((sigmoid(theta.T.dot(x)) ** y) * (1 - sigmoid(theta.T.dot(x)) ** (1- y)) )
+
+# have a test on the former 3 functions
+test_xb = Xb[1].ravel()
+test_theta = np.zeros(3)
+
+test_xb.dot(test_theta)
+Xb.dot(test_theta)
+
+def log_regression(Y, X, alpha=5):
+    # Y = Yb, X = Xb
+    theta = np.zeros(X.shape[1])
