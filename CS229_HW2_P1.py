@@ -74,9 +74,11 @@ if __name__ == '__main__':
 # read the dataset and plot the distribution
 dfb = pd.read_csv('data_b.txt', header=None, sep=' ', names=['label', 'x1', 'x2'])
 
+'''
 ax = plt.axes()
 dfb.query('label == -1').plot.scatter(x='x1', y='x2', ax=ax, color='blue')
 dfb.query('label == 1').plot.scatter(x='x1', y='x2', ax=ax, color='red')
+'''
 
 # then, we try to use MLE on the traing set to get the theta 
 dfb.head()
