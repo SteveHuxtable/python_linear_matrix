@@ -29,6 +29,8 @@ frame2 = frame.reindex(['a', 'b', 'c', 'd'])
 frame2.loc[['a'], ['Ohio']]
 frame2['Ohio']['a']
 
+
+
 frame3 = pd.DataFrame(np.arange(9).reshape((3, 3)), index=['a', 'b', 'c'], columns=['1st', '2nd', '3rd'])
 
 frame3.drop(labels=['2nd'], axis=1)

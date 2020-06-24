@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "virtualEnv/bin/python",
+    "python.pythonPath": "/Users/stevehu/opt/anaconda3/bin/python",
     "html.format.wrapLineLength": 80
 }
