@@ -52,3 +52,21 @@ np.zeros((5, 3))
 np.diag((1, 2, 3, 4, 5))
 np.eye(10)
 
+# rank of a matrix
+np.linalg.matrix_rank(np.diag([1, 2, 3, 4, 5, 6, 7]))
+
+from scipy import linalg
+import scipy
+
+np.random.seed(999)
+find_inv = np.random.randn(9).reshape((3, 3))
+inv = scipy.linalg.inv(find_inv)
+inv_2 = np.linalg.inv(find_inv)
+
+np.dot(find_inv, inv)   # not I, but okay
+
+A = np.array([[1, 2, 3],
+              [1, -1, 4],
+              [2, 3, -1]])
+y = np.array([14, 11, 5])
+np.linalg.solve(A, y)
