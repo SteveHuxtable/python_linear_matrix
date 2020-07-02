@@ -46,3 +46,28 @@ grouped = tips.groupby(['day', 'smoker'])
 grouped_pct = grouped['tip_pct']
 grouped_pct.mean()
 
+# fill data with na value
+s = pd.Series(np.random.randn(6))
+s[::2] = np.nan
+s.fillna(s.mean())
+
+df = pd.DataFrame({'category': ['a', 'a', 'a', 'a',
+                                'b', 'b', 'b', 'b'],
+                                'data': np.random.randn(8),
+                                'weights': np.random.randn(8)})
+
+grouped = df.groupby('category')
+get_wavg = lambda g: np.average(g['data'], weights=g['weights'])
+grouped.apply(get_wavg)
+
+close_px = pd.read_csv('stock_px_2.csv', parse_dates=True, index_col=0)
+close_px.info()
+close_px.corrwith(close_px['SPX']) # to calculate the correlation
+
+spx_corr = lambda x: x.corrwith(x['SPX'])
+
+tips = pd.read_csv('tips.csv')
+tips.pivot_table(index=['day', 'smoker'])
+
+grouped = tips.groupby(['day', 'smoker'])
+grouped.mean()
